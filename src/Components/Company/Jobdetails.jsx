@@ -1,12 +1,14 @@
 import React from 'react';
+import { MdOutlineLocationOn } from 'react-icons/md';
+import { Link } from 'react-router';
 
 const Jobdetails = ({insideJob, fulljob}) => {
     console.log(fulljob);
     
     console.log(insideJob);
-    const{title,jobType, salary} = insideJob;
+    const{title,jobType,jobLocation, salary,description, requirements, } = insideJob;
 
-    const{industry, location, logo, name, website}=fulljob
+    const{industry, companyLocation, logo, name, website}=fulljob
     
     return (
         <div >
@@ -27,11 +29,54 @@ const Jobdetails = ({insideJob, fulljob}) => {
       {/* Open the modal using document.getElementById('ID').showModal() method */}
 <button className="btn text-white  btn-info btn-block" onClick={()=>document.getElementById('my_modal_5').showModal()}>Details</button>
 <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-  <div className="modal-box">
+  <div className="modal-box space-y-4">
+
+<div className='flex gap-3 items-center'>
+<img className='w-8 rounded-full' src={logo} alt="" />
+<h2 className='font-bold '>{name}</h2>
+</div>
+<div className="badge text-white badge-success">{industry}</div>
 
 
-    <h3 className="font-bold text-lg">{name}</h3>
-    <p className="py-4">Press ESC key or click the button below to close</p>
+<div className='flex gap-7 justify-between'>
+    <div className="flex gap-2 items-center">
+    <MdOutlineLocationOn />
+    <p>{companyLocation}</p>
+    </div>
+
+
+
+</div>
+
+
+<p>Website: <Link to={website}>{website}</Link> </p>
+
+<h2 className="font-bold">Title: {title}</h2>
+<div>
+        <h1 className=' font-bold'>Description:</h1>
+        {description}
+    </div>
+
+    <div>
+ 
+        
+    <p> <span className='font-semibold'>Job Type:</span> {jobType}</p>
+    <p>work:{jobLocation} </p>
+
+
+    </div>
+    <p> <span className='font-semibold'>Salary Range:</span> {salary}</p>
+
+    
+
+    <div>
+        <h2 className='font-bold'>Requirements:</h2>
+        {requirements}
+
+    </div>
+
+  
+
 
 
     <div className="modal-action">
