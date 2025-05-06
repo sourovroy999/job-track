@@ -61,7 +61,7 @@ const Jobdetails = ({insideJob, fulljob}) => {
  
         
     <p> <span className='font-semibold'>Job Type:</span> {jobType}</p>
-    <p>work:{jobLocation} </p>
+    <p><span className='font-semibold'>jobLocation:</span>  {jobLocation} </p>
 
 
     </div>
@@ -76,6 +76,7 @@ const Jobdetails = ({insideJob, fulljob}) => {
     </div>
 
   
+  <Link to='/' target='_blank' className='btn btn-wide btn-success mt-8 flex mx-auto'>Apply</Link>
 
 
 
