@@ -11,6 +11,7 @@ import { StrictMode } from 'react'
 import './index.css'
 import MainLayout from "./Components/MainLayout/MainLayout";
 import Home from "./Components/Pages/Home";
+import CompanyDetails from "./Components/Pages/CompanyDetails";
 
 
 const router = createBrowserRouter([
@@ -21,10 +22,14 @@ const router = createBrowserRouter([
       {
         path:'/',
         element:<Home/>,
-        loader:()=>fetch('joblist.json')
+        loader:()=>fetch('/joblist.json')
 
       },
       {
+        path:'/company/:id',
+        element:<CompanyDetails/>,
+        loader:()=>fetch('/joblist.json'),
+
 
       }
     ]
