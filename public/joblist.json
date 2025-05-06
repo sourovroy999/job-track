@@ -1,0 +1,149 @@
+[
+    {
+      "id": "1",
+      "name": "CodeCraft Ltd.",
+      "logo": "https://i.ibb.co.com/NdyPGdvT/codecraft-logo.png",
+      "location": "San Francisco, CA",
+      "website": "https://codecraft.dev",
+      "industry": "Software Development",
+      "jobs": [
+        {
+          "id": "job-001",
+          "title": "Frontend Developer",
+          "bannerImage": "https://example.com/images/frontend-banner.png",
+          "location": "Remote",
+          "salary": "$70,000 - $90,000",
+          "jobType": "Full-time",
+          "description": "We’re looking for a creative frontend developer to build engaging user interfaces.",
+          "requirements": [
+            "Proficient in HTML, CSS, and JavaScript",
+            "Experience with React or Vue.js",
+            "Familiarity with RESTful APIs",
+            "Good understanding of responsive design",
+            "Excellent problem-solving skills"
+          ]
+        },
+        {
+          "id": "job-002",
+          "title": "UI/UX Designer",
+          "bannerImage": "https://example.com/images/uiux-banner.png",
+          "location": "San Francisco, CA",
+          "salary": "$60,000 - $80,000",
+          "jobType": "Full-time",
+          "description": "Design clean and intuitive user experiences for our web and mobile platforms.",
+          "requirements": [
+            "Strong portfolio of UI/UX work",
+            "Experience with Figma or Adobe XD",
+            "Understanding of design systems",
+            "Basic knowledge of HTML/CSS is a plus"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "DevSolutions Inc.",
+      "logo": "https://i.ibb.co.com/5xfMdFj6/Dev-Solution.png",
+      "location": "Austin, TX",
+      "website": "https://devsolutions.io",
+      "industry": "IT Consulting",
+      "jobs": [
+        {
+          "id": "job-003",
+          "title": "Backend Developer",
+          "bannerImage": "https://example.com/images/backend-banner.png",
+          "location": "Austin, TX",
+          "salary": "$80,000 - $100,000",
+          "jobType": "Full-time",
+          "description": "Develop robust backend services and REST APIs using Node.js.",
+          "requirements": [
+            "Strong experience in Node.js and Express",
+            "Familiarity with MongoDB or PostgreSQL",
+            "Understanding of REST and authentication",
+            "Unit testing and CI/CD practices"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "ByteBridge",
+      "logo": "https://i.ibb.co.com/gbY2dnxv/byte-bridge.png",
+      "location": "New York, NY",
+      "website": "https://bytebridge.tech",
+      "industry": "Cloud Computing",
+      "jobs": [
+        {
+          "id": "job-004",
+          "title": "DevOps Engineer",
+          "bannerImage": "https://example.com/images/devops-banner.png",
+          "location": "New York, NY",
+          "salary": "$95,000 - $120,000",
+          "jobType": "Full-time",
+          "description": "Maintain and scale our cloud infrastructure using modern DevOps tools.",
+          "requirements": [
+            "Experience with AWS or Azure",
+            "Knowledge of Docker and Kubernetes",
+            "CI/CD pipeline setup and maintenance",
+            "Strong scripting skills (Bash, Python)"
+          ]
+        },
+        {
+          "id": "job-005",
+          "title": "Cloud Security Analyst",
+          "bannerImage": "https://example.com/images/security-banner.png",
+          "location": "Remote",
+          "salary": "$100,000 - $130,000",
+          "jobType": "Full-time",
+          "description": "Protect and monitor our cloud systems for vulnerabilities and threats.",
+          "requirements": [
+            "Understanding of cloud security best practices",
+            "Experience with firewalls and intrusion detection systems",
+            "Knowledge of compliance standards (SOC2, ISO27001)",
+            "Security certifications (e.g., CISSP, AWS Security)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "TechNova Systems",
+      "logo": "https://i.ibb.co.com/KzLCz7Sq/Technova-System.png",
+      "location": "Seattle, WA",
+      "website": "https://technova.systems",
+      "industry": "AI & Machine Learning",
+      "jobs": [
+        {
+          "id": "job-006",
+          "title": "Machine Learning Engineer",
+          "bannerImage": "https://example.com/images/ml-banner.png",
+          "location": "Remote",
+          "salary": "$110,000 - $140,000",
+          "jobType": "Full-time",
+          "description": "Design and deploy scalable ML models for real-world applications.",
+          "requirements": [
+            "Strong foundation in machine learning algorithms",
+            "Experience with TensorFlow or PyTorch",
+            "Proficiency in Python and data manipulation libraries",
+            "Experience deploying models to production"
+          ]
+        },
+        {
+          "id": "job-007",
+          "title": "Data Scientist",
+          "bannerImage": "https://example.com/images/data-science-banner.png",
+          "location": "Seattle, WA",
+          "salary": "$100,000 - $125,000",
+          "jobType": "Full-time",
+          "description": "Analyze complex data sets to drive business decisions and insights.",
+          "requirements": [
+            "Expertise in statistics and data analysis",
+            "Proficiency in Python, R, or SQL",
+            "Experience with data visualization tools (e.g., Tableau, PowerBI)",
+            "Strong communication and storytelling with data"
+          ]
+        }
+      ]
+    }
+  ]
+  
