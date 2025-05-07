@@ -12,6 +12,9 @@ import './index.css'
 import MainLayout from "./Components/MainLayout/MainLayout";
 import Home from "./Components/Pages/Home";
 import CompanyDetails from "./Components/Pages/CompanyDetails";
+import Login from "./Components/Pages/Login";
+import Registration from "./Components/Pages/Registration";
+import AuthProvider from "./Components/AuthProvider/AuthProvider";
 
 
 const router = createBrowserRouter([
@@ -31,6 +34,14 @@ const router = createBrowserRouter([
         loader:()=>fetch('/joblist.json'),
 
 
+      },
+      {
+        path:'/login',
+        element:<Login/>
+      },
+      {
+        path:'/registration',
+        element:<Registration/>
       }
     ]
   },
@@ -39,6 +50,9 @@ const router = createBrowserRouter([
 const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(
-  <RouterProvider router={router} />
+  <AuthProvider>
+
+    <RouterProvider router={router} />
+  </AuthProvider>
 );
 
