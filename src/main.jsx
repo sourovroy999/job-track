@@ -15,6 +15,8 @@ import CompanyDetails from "./Components/Pages/CompanyDetails";
 import Login from "./Components/Pages/Login";
 import Registration from "./Components/Pages/Registration";
 import AuthProvider from "./Components/AuthProvider/AuthProvider";
+import MyProfile from "./Components/Pages/MyProfile";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 
 
 const router = createBrowserRouter([
@@ -40,8 +42,14 @@ const router = createBrowserRouter([
         element:<Login/>
       },
       {
-        path:'/registration',
+        path:'/register',
         element:<Registration/>
+      },
+      {
+        path:'/profile',
+        element:<ProtectedRoute>
+          <MyProfile/>
+        </ProtectedRoute>
       }
     ]
   },

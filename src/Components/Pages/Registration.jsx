@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-// import { createUserWithEmailAndPassword } from 'firebase/auth';
-// import auth from '../Firebase/Firebase.init';
+import { Link } from 'react-router';
+import { updateProfile } from 'firebase/auth';
+import auth from '../Firebase/Firebase.init';
+
 
 const Registration = () => {
 
-const {registerUser}=useContext(AuthContext)
+const {registerUser, setUser}=useContext(AuthContext)
 
 
     const handleSubmit=(e)=>{
@@ -18,11 +20,22 @@ const {registerUser}=useContext(AuthContext)
         console.log(name, email, photo, password);
 
         registerUser(email, password)
-        .then((result)=>console.log(result))
-        // .then(result=>setUser())
-        // createUserWithEmailAndPassword(auth, email, password)
-        // .then((result)=>console.log(result)
-        // )
+        .then((result)=>{
+            setUser(result.user);
+            console.log(result.user);
+            updateProfile(auth.currentUser, {
+                displayName:name,
+                photoURL:photo
+            }).then(()=>{
+                console.log('profile updated');
+                
+            })
+            .catch((error)=>{
+                console.log(error.message)
+            })
+            
+        })
+       
         
 
 
@@ -52,6 +65,10 @@ const {registerUser}=useContext(AuthContext)
                     <h1>Password</h1>
                 <input name='password' type="password" placeholder="Password" className="input my-2 w-[300px]" />
 
+                </div>
+
+                <div className='text-left'>
+                    ALready have an account?<Link to='/login' className='text-blue-500'>Login</Link>
                 </div>
 
                 <button className='btn btn-wide my-4 btn-info'> Registration</button>
