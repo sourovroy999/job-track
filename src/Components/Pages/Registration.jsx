@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { updateProfile } from 'firebase/auth';
 import auth from '../Firebase/Firebase.init';
 
@@ -8,6 +8,8 @@ import auth from '../Firebase/Firebase.init';
 const Registration = () => {
 
 const {registerUser, setUser}=useContext(AuthContext)
+    const naviGate=useNavigate()
+
 
 
     const handleSubmit=(e)=>{
@@ -28,6 +30,7 @@ const {registerUser, setUser}=useContext(AuthContext)
                 photoURL:photo
             }).then(()=>{
                 console.log('profile updated');
+                naviGate('/')
                 
             })
             .catch((error)=>{
@@ -42,7 +45,7 @@ const {registerUser, setUser}=useContext(AuthContext)
     }
 
     return (
-        <div className='w-3xl mx-auto'>
+        <div className=' mx-auto'>
            <h1 className='text-2xl my-8 text-center '> Registration Page</h1>
 
             <form onSubmit={handleSubmit} className='bg-base-200 flex flex-col py-5 items-center '>

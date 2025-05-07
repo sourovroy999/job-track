@@ -6,7 +6,7 @@ import herojob from '../../assets/herojob.png'
 
 const Header = () => {
     return (
-        <div className='text-white h-screen justify-center items-center' style={{ backgroundImage: `url(${herobg})`,
+        <div className='text-white  justify-center items-center' style={{ backgroundImage: `url(${herobg})`,
         transform:'scaleX(-1)'
         }}>
             <div className='flex justify-center -scale-x-100 items-center py-24'>

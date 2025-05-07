@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 const Login = () => {
 
     const {signInUser, setUser, googleSignIn}= useContext(AuthContext)
+    const naviGate=useNavigate()
 
     const handleSignIn=(e)=>{
         e.preventDefault()
@@ -15,6 +16,8 @@ const Login = () => {
         signInUser(email, password)
         .then((result)=>{
             setUser(result.user);
+            naviGate('/')
+
        }
        
         )
@@ -24,6 +27,10 @@ const Login = () => {
 
     const handleGoogleLogin=()=>{
         googleSignIn()
+        .then(()=>{
+            naviGate('/')
+        })
+
     }
 
 
@@ -45,7 +52,7 @@ const Login = () => {
                 <button className="btn btn-neutral mt-4">Login</button>
               </fieldset>
             </form>
-            <button onClick={handleGoogleLogin} className='btn mb-3 bg-green-500'>Log In With Google</button>
+            <button onClick={handleGoogleLogin} className='btn mb-3 mx-4 bg-green-500'>Log In With Google</button>
           </div>
         </div>
       </div>
