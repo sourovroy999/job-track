@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 const Login = () => {
 
-    const {signInUser, setUser}= useContext(AuthContext)
+    const {signInUser, setUser, googleSignIn}= useContext(AuthContext)
 
     const handleSignIn=(e)=>{
         e.preventDefault()
@@ -20,6 +20,10 @@ const Login = () => {
         )
         .catch(error=>console.log(error.message)
         )
+    }
+
+    const handleGoogleLogin=()=>{
+        googleSignIn()
     }
 
 
@@ -41,6 +45,7 @@ const Login = () => {
                 <button className="btn btn-neutral mt-4">Login</button>
               </fieldset>
             </form>
+            <button onClick={handleGoogleLogin} className='btn mb-3 bg-green-500'>Log In With Google</button>
           </div>
         </div>
       </div>

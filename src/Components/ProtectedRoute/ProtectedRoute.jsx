@@ -3,7 +3,12 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 import { Navigate } from 'react-router';
 
 const ProtectedRoute = ({children}) => {
-    const {user}=useContext(AuthContext);
+    const {user,loading}=useContext(AuthContext);
+
+    if(loading){
+        return <span className="loading loading-spinner ml-48 text-center text-success"></span>
+    }
+
     if(user){
         return children
     }
