@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router';
 import toast, { Toaster } from 'react-hot-toast';
@@ -6,6 +6,9 @@ import toast, { Toaster } from 'react-hot-toast';
 const Login = () => {
 
     const {signInUser, setUser, googleSignIn}= useContext(AuthContext)
+
+    const [error, setError]=useState('')
+
     const naviGate=useNavigate()
     const location=useLocation();
 
@@ -29,7 +32,7 @@ const Login = () => {
        }
        
         )
-        .catch(error=>console.log(error.message)
+        .catch(error=>setError(error.message)
         )
     }
 
@@ -39,6 +42,9 @@ const Login = () => {
             naviGate(location?.state ? location.state: '/')
             logInToast()
 
+        })
+        .catch((err)=>{
+            setError(err)
         })
 
     }
@@ -56,6 +62,9 @@ const Login = () => {
                 <label className="label">Password</label>
                 <input name='password' type="password" className="input" placeholder="Password" />
                 <div><a className="link link-hover">Forgot password?</a></div>
+                {
+                    error? <div className='text-red-400'>{error}</div>  : ''
+                }
                 <div>
                     Don't have an account? <Link to='/register' className='text-blue-500'>Register</Link>
                 </div>
@@ -64,6 +73,7 @@ const Login = () => {
               </fieldset>
             </form>
             <button onClick={handleGoogleLogin} className='btn mb-3 mx-4 bg-green-500'>Log In With Google</button>
+
           </div>
         </div>
       </div>

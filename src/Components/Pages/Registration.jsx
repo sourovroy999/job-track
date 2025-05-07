@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { Link, useNavigate } from 'react-router';
 import { updateProfile } from 'firebase/auth';
@@ -9,6 +9,8 @@ import toast from 'daisyui/components/toast';
 const Registration = () => {
 
 const {registerUser, setUser}=useContext(AuthContext)
+
+const[error, setError]=useState('')
     const naviGate=useNavigate()
 
     const registerToast=()=>{
@@ -25,6 +27,10 @@ const {registerUser, setUser}=useContext(AuthContext)
         const password=e.target.password.value;
 
         console.log(name, email, photo, password);
+        if(!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)){
+            setError('Password must have  -At least one lowercase letter, -At least one lowercase letter, – At least 6 characters total ')
+            return;
+        }
 
         registerUser(email, password)
         .then((result)=>{
@@ -74,6 +80,11 @@ const {registerUser, setUser}=useContext(AuthContext)
                     <h1>Password</h1>
                 <input name='password' type="password" placeholder="Password" className="input my-2 w-[300px]" />
 
+                </div>
+                <div className=''>
+                {
+                    error? <div className='text-red-500 my-6 px-10'>{error}</div> : ''
+                }
                 </div>
 
                 <div className='text-left'>
