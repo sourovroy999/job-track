@@ -1,14 +1,21 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { Navigate, useNavigate } from 'react-router';
+import toast from 'react-hot-toast';
 
 const MyProfile = () => {
     const{user, signOutUser}=useContext(AuthContext)
 
+   
     // const naviGate=useNavigate()
 
     const handleLogOut=()=>{
         signOutUser()
+       
+            
+          
+       
+
         //  naviGate('/login')
     }
 

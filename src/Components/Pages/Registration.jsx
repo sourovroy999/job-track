@@ -3,12 +3,17 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 import { Link, useNavigate } from 'react-router';
 import { updateProfile } from 'firebase/auth';
 import auth from '../Firebase/Firebase.init';
+import toast from 'daisyui/components/toast';
 
 
 const Registration = () => {
 
 const {registerUser, setUser}=useContext(AuthContext)
     const naviGate=useNavigate()
+
+    const registerToast=()=>{
+        toast.success('Registration successfull')
+    }
 
 
 
@@ -30,7 +35,8 @@ const {registerUser, setUser}=useContext(AuthContext)
                 photoURL:photo
             }).then(()=>{
                 console.log('profile updated');
-                naviGate('/')
+                naviGate(location?.state ? location.state : '/');
+                registerToast()
                 
             })
             .catch((error)=>{
@@ -74,7 +80,7 @@ const {registerUser, setUser}=useContext(AuthContext)
                     ALready have an account?<Link to='/login' className='text-blue-500'>Login</Link>
                 </div>
 
-                <button className='btn btn-wide my-4 btn-info'> Registration</button>
+                <button className='btn btn-wide text-white my-4 btn-info'> Register</button>
 
             </form>
         </div>

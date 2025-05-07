@@ -17,6 +17,7 @@ import Registration from "./Components/Pages/Registration";
 import AuthProvider from "./Components/AuthProvider/AuthProvider";
 import MyProfile from "./Components/Pages/MyProfile";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+import { Toaster } from "react-hot-toast";
 
 
 const router = createBrowserRouter([
@@ -61,6 +62,7 @@ ReactDOM.createRoot(root).render(
   <AuthProvider>
 
     <RouterProvider router={router} />
+    <Toaster/>
   </AuthProvider>
 );
 

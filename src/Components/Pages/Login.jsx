@@ -1,11 +1,17 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
 
     const {signInUser, setUser, googleSignIn}= useContext(AuthContext)
     const naviGate=useNavigate()
+    const location=useLocation();
+
+    const logInToast=()=>{
+        toast.success('log in successfully')
+    }
 
     const handleSignIn=(e)=>{
         e.preventDefault()
@@ -16,7 +22,9 @@ const Login = () => {
         signInUser(email, password)
         .then((result)=>{
             setUser(result.user);
-            naviGate('/')
+            naviGate(location?.state ? location.state: '/')
+            logInToast()
+            
 
        }
        
@@ -28,7 +36,9 @@ const Login = () => {
     const handleGoogleLogin=()=>{
         googleSignIn()
         .then(()=>{
-            naviGate('/')
+            naviGate(location?.state ? location.state: '/')
+            logInToast()
+
         })
 
     }
@@ -50,6 +60,7 @@ const Login = () => {
                     Don't have an account? <Link to='/register' className='text-blue-500'>Register</Link>
                 </div>
                 <button className="btn btn-neutral mt-4">Login</button>
+               
               </fieldset>
             </form>
             <button onClick={handleGoogleLogin} className='btn mb-3 mx-4 bg-green-500'>Log In With Google</button>
