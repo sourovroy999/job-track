@@ -37,7 +37,9 @@ const router = createBrowserRouter([
       },
       {
         path:'/company/:id',
-        element:<CompanyDetails/>,
+        element:<ProtectedRoute>
+        <CompanyDetails/>
+      </ProtectedRoute>,
         loader:()=>fetch('/joblist.json'),
 
 
