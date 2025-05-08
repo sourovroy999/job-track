@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import { Link, Navigate, useNavigate } from 'react-router';
-import toast from 'react-hot-toast';
+import { Link} from 'react-router';
 
 const MyProfile = () => {
     const{user, signOutUser}=useContext(AuthContext)
@@ -16,7 +15,6 @@ const MyProfile = () => {
           
        
 
-        //  naviGate('/login')
     }
 
 

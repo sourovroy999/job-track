@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import auth from '../Firebase/Firebase.init';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, } from 'firebase/auth';
 import toast from 'react-hot-toast';
-import { redirect } from 'react-router';
+// import { useNavigate } from 'react-router';
 
 export const AuthContext=createContext(null)
 const googleProvider= new GoogleAuthProvider();
@@ -10,7 +10,7 @@ const googleProvider= new GoogleAuthProvider();
 
 
 const AuthProvider = ({children}) => {
-
+    // const naviGateUser=useNavigate()
 
     const [user, setUser]=useState(null)
 
@@ -48,6 +48,9 @@ const AuthProvider = ({children}) => {
 const resetError=(error)=>{
     toast.error(error)
 }
+const updateProfileToast=()=>{
+    toast.success('Profile updated successfully')
+}
 
  const resetPassword=(email)=>{
     sendPasswordResetEmail(auth,email)
@@ -70,6 +73,14 @@ const resetError=(error)=>{
     updateProfile(auth.currentUser,{
         displayName:name, 
         photoURL:photo
+    })
+    .then(()=>{
+        updateProfileToast()
+        // naviGateUser()
+
+    })
+    .catch((error)=>{
+        resetError(error.message)
     })
  }
 

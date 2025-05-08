@@ -1,9 +1,16 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import toast from 'react-hot-toast';
+// import { useNavigate } from 'react-router';
 
 const UpdateProfile = () => {
 
+        // const naviGate=useNavigate()
+    
     const{updateProfileInside}=useContext(AuthContext)
+
+   
+
 
     const handleUpdateProfile=(e)=>{
         e.preventDefault();
@@ -11,6 +18,8 @@ const UpdateProfile = () => {
         const name=e.target.name.value;
         
         updateProfileInside(name,photo)
+           
+
 
     }
     return (
@@ -21,7 +30,7 @@ const UpdateProfile = () => {
     
     <div>
         <h1>Name</h1>
-    <input name='name' type="text" placeholder="Name" className="input my-2 w-[300px]" />
+    <input required name='name' type="text" placeholder="Name" className="input my-2 w-[300px]" />
 
     </div>
     <div>

@@ -9,6 +9,10 @@ const Jobdetails = ({insideJob, fulljob}) => {
     const{title,jobType,jobLocation, salary,description, requirements, } = insideJob;
 
     const{industry, companyLocation, logo, name, website}=fulljob
+
+    const handleApply=(website)=>{
+        window.open(website ,'_blank')
+    }
     
     return (
         <div >
@@ -76,7 +80,7 @@ const Jobdetails = ({insideJob, fulljob}) => {
     </div>
 
   
-  <Link to='/' target='_blank' className='btn btn-wide btn-success mt-8 flex mx-auto'>Apply</Link>
+  <Link onClick={()=>{handleApply(website)}} className='btn btn-wide btn-success mt-8 flex mx-auto'>Apply</Link>
 
 
 

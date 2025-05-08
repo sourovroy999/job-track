@@ -6,7 +6,9 @@ const ProtectedRoute = ({children}) => {
     const {user,loading}=useContext(AuthContext);
 
     if(loading){
-        return <span className="loading loading-spinner ml-48 text-center text-success"></span>
+        return <div className='h-screen flex flex-col justify-center items-center '>
+            <span className="loading loading-spinner text-success"></span>
+        </div> 
     }
 
     if(user){
