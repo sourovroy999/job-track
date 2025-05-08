@@ -44,8 +44,12 @@ const Login = () => {
         signInUser(email, password)
         .then((result)=>{
             setUser(result.user);
-            naviGate(location?.state ? location.state: '/')
-            logInToast()
+            
+            
+            const destination = location.state?.from?.pathname || '/';
+                console.log("Redirecting to:", destination);
+                naviGate(destination);
+                logInToast();
             
 
        }
