@@ -1,7 +1,8 @@
 import React, { createContext, useEffect, useState } from 'react';
 import auth from '../Firebase/Firebase.init';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, } from 'firebase/auth';
 import toast from 'react-hot-toast';
+import { redirect } from 'react-router';
 
 export const AuthContext=createContext(null)
 const googleProvider= new GoogleAuthProvider();
@@ -52,6 +53,7 @@ const resetError=(error)=>{
     sendPasswordResetEmail(auth,email)
     .then(()=>{
             resetToast()
+            
         })
         .catch((err)=>{
             console.log(err.message);
@@ -62,6 +64,13 @@ const resetError=(error)=>{
             resetError(err.message)
         })
 
+ }
+
+ const updateProfileInside=(name, photo)=>{
+    updateProfile(auth.currentUser,{
+        displayName:name, 
+        photoURL:photo
+    })
  }
 
 
@@ -95,7 +104,8 @@ const resetError=(error)=>{
         signOutUser,
         googleSignIn,
         loading,
-        resetPassword
+        resetPassword,
+        updateProfileInside
     }
 
     useEffect(()=>{

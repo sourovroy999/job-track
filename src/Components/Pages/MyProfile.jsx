@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import { Navigate, useNavigate } from 'react-router';
+import { Link, Navigate, useNavigate } from 'react-router';
 import toast from 'react-hot-toast';
 
 const MyProfile = () => {
@@ -44,6 +44,8 @@ const MyProfile = () => {
         </div>
 
         <button onClick={handleLogOut} className='btn mt-6'>Log Out</button>
+
+        <Link to='/update-profile' className='btn mt-5'>Update Profile</Link>
 
 
 

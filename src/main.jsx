@@ -21,6 +21,7 @@ import { Toaster } from "react-hot-toast";
 import ErrorPage from "./Components/Pages/ErrorPage";
 import ReviewPage from "./Components/Pages/ReviewPage";
 import PasswordReset from "./Components/Pages/PasswordReset";
+import UpdateProfile from "./Components/Pages/UpdateProfile";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path:'resetpassword',
         element:<PasswordReset/>
+      },
+      {
+        path:'update-profile',
+        element:<UpdateProfile/>
       }
     ]
   },

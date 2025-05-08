@@ -1,30 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import toast from 'react-hot-toast';
+import { useLocation } from 'react-router';
 
 const PasswordReset = () => {
     const{resetPassword}=useContext(AuthContext)
+    const location=useLocation();
+    const[email,setEmail]=useState('')
 
-    // const resetToast=()=>{
-    //     toast.success('Password reset link sent')
-    // }
+    useEffect(()=>{
+        if(location.state?.email){
+            setEmail(location.state.email)
+        }
+    },[location.state])
 
-    // const resetError=(error)=>{
-    //     toast.error(error)
-    // }
+  
 
     const handleReset=(e)=>{
         e.preventDefault();
         const email=e.target.email.value;
         resetPassword(email)
-        // .then(()=>{
-        //     resetToast()
-        // })
-        // .catch((err)=>{
-        //     console.log(err.message);
-            
-        //     resetError(err.message)
-        // })
+        window.open('https://mail.google.com', '_blank');
+       
 
     }
 
@@ -34,7 +30,10 @@ const PasswordReset = () => {
             <form onSubmit={handleReset}>
             <div>
                   <h1 className='font-medium'>Enter Your Email</h1>
-                <input name='email' type="email" placeholder="Email" className="input my-2 w-[300px]" />
+                <input name='email' type="email"
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
+                placeholder="Email" className="input my-2 w-[300px]" />
             </div>
 
 

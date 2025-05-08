@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import { Link, useLocation, useNavigate } from 'react-router';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router';
 import toast, { Toaster } from 'react-hot-toast';
 import PasswordReset from './PasswordReset';
 
@@ -26,6 +26,8 @@ const Login = () => {
     const handleForgetPassword=()=>{
         const emailGet=emailRef.current.value;
         console.log(emailGet);
+        naviGate('/resetpassword', {state:{email:emailGet}})
+
         
     }
 
