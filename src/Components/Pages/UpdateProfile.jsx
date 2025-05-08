@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import toast from 'react-hot-toast';
-// import { useNavigate } from 'react-router';
+
 
 const UpdateProfile = () => {
 
-        // const naviGate=useNavigate()
+       useEffect(() => {
+                    document.title = ' JobTrack | Update Profile';
+                  }, []);
+
     
     const{updateProfileInside}=useContext(AuthContext)
 

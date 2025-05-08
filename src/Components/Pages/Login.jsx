@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router';
 import toast, { Toaster } from 'react-hot-toast';
@@ -7,6 +7,10 @@ import PasswordReset from './PasswordReset';
 const Login = () => {
 
     const emailRef=useRef()
+
+    useEffect(()=>{
+        document.title='Login | Jobtrack'
+    },[])
     
 
     

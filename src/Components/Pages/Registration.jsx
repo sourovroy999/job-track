@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { Link, useNavigate } from 'react-router';
 import { updateProfile } from 'firebase/auth';
@@ -9,6 +9,11 @@ import toast from 'daisyui/components/toast';
 const Registration = () => {
 
 const {registerUser, setUser, googleSignIn}=useContext(AuthContext)
+
+useEffect(() => {
+            document.title = 'Register | JobTrack';
+          }, []);
+      
 
 const[error, setError]=useState('')
     const naviGate=useNavigate()

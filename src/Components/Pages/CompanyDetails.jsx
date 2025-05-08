@@ -1,18 +1,14 @@
 import React from 'react';
-// import { useContext } from 'react';
+
 import { useLoaderData, useParams } from 'react-router';
 import Jobdetails from '../Company/Jobdetails';
-// import JobDetailsNew from '../Company/JobDetailsNew';
-// import { allCompany } from '../Company/companySingle';
+
 
 const CompanyDetails = () => {
     const{id}=useParams()
     console.log(id);
 
-    // const companyFull=useContext(allCompany )
-
-    // const {insideCompany}=companyFull;
-    // console.log(insideCompany);
+   
     const data=useLoaderData()
     console.log(data);
 

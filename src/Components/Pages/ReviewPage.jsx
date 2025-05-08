@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const ReviewPage = () => {
+
+  useEffect(() => {
+              document.title = ' JobTrack | Reviews';
+            }, []);
+
   const reviews = [
     {
       id: 1,

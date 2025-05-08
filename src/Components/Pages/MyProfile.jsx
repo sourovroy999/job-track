@@ -1,9 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { Link} from 'react-router';
 
 const MyProfile = () => {
     const{user, signOutUser}=useContext(AuthContext)
+
+    useEffect(() => {
+                document.title = ' JobTrack | My Profile';
+              }, []);
 
    
     // const naviGate=useNavigate()
