@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import auth from '../Firebase/Firebase.init';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, } from 'firebase/auth';
 import toast from 'react-hot-toast';
 
 export const AuthContext=createContext(null)
@@ -40,6 +40,29 @@ const AuthProvider = ({children}) => {
     return signInWithEmailAndPassword(auth, email, password)
  }
 
+ const resetToast=()=>{
+    toast.success('Password reset link sent')
+}
+
+const resetError=(error)=>{
+    toast.error(error)
+}
+
+ const resetPassword=(email)=>{
+    sendPasswordResetEmail(auth,email)
+    .then(()=>{
+            resetToast()
+        })
+        .catch((err)=>{
+            console.log(err.message);
+            const errorMessage = err.message;
+            console.log(errorMessage);
+            
+            
+            resetError(err.message)
+        })
+
+ }
 
 
  const googleSignIn=()=>{
@@ -71,7 +94,8 @@ const AuthProvider = ({children}) => {
         signInUser,
         signOutUser,
         googleSignIn,
-        loading
+        loading,
+        resetPassword
     }
 
     useEffect(()=>{

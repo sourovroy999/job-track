@@ -18,12 +18,15 @@ import AuthProvider from "./Components/AuthProvider/AuthProvider";
 import MyProfile from "./Components/Pages/MyProfile";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import { Toaster } from "react-hot-toast";
-
+import ErrorPage from "./Components/Pages/ErrorPage";
+import ReviewPage from "./Components/Pages/ReviewPage";
+import PasswordReset from "./Components/Pages/PasswordReset";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout/>,
+    errorElement:<ErrorPage/>,
     children:[
       {
         path:'/',
@@ -51,6 +54,14 @@ const router = createBrowserRouter([
         element:<ProtectedRoute>
           <MyProfile/>
         </ProtectedRoute>
+      },
+      {
+        path:'/review',
+        element:<ReviewPage/>
+      },
+      {
+        path:'resetpassword',
+        element:<PasswordReset/>
       }
     ]
   },

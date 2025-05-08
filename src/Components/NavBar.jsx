@@ -10,25 +10,23 @@ const NavBar = () => {
 console.log(user);
 
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar flex justify-between  bg-base-200 shadow-sm">
             
-  <div className="flex-1">
+  <div className="">
     <Link to='/' className="btn btn-ghost text-xl">JobTrack</Link>
   </div>
 
+  <div className=''>
+    <Link className="font-medium text-sm" to='/review'>Reviews</Link>
+  </div>
 
+<div>
 
   {
         user?   <div className="flex-none">
              
 
 <div className="">
-
-{       
-    user? user.email : ''
-
-        
-    } 
 
   <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
     <div className="w-10 rounded-full">
@@ -42,13 +40,13 @@ console.log(user);
   </div>
  
 </div>
-</div> : <div className='flex gap-4 mr-6'>  
+</div> : <div className='flex gap-4 '>  
         <NavLink to='/login'>LogIn</NavLink>
         <NavLink to='/register'>Register</NavLink>
         </div> 
     }
 
-
+</div>
    
  
 </div>

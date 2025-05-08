@@ -8,7 +8,7 @@ import toast from 'daisyui/components/toast';
 
 const Registration = () => {
 
-const {registerUser, setUser}=useContext(AuthContext)
+const {registerUser, setUser, googleSignIn}=useContext(AuthContext)
 
 const[error, setError]=useState('')
     const naviGate=useNavigate()
@@ -17,6 +17,18 @@ const[error, setError]=useState('')
         toast.success('Registration successfull')
     }
 
+    const handleGoogleLogin=()=>{
+        googleSignIn()
+        .then(()=>{
+            naviGate(location?.state ? location.state: '/')
+            registerToast()
+
+        })
+        .catch((err)=>{
+            setError(err.message)
+        })
+
+    }
 
 
     const handleSubmit=(e)=>{
@@ -26,7 +38,7 @@ const[error, setError]=useState('')
         const photo=e.target.photo.value;
         const password=e.target.password.value;
 
-        console.log(name, email, photo, password);
+       
         if(!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)){
             setError('Password must have  -At least one lowercase letter, -At least one lowercase letter, – At least 6 characters total ')
             return;
@@ -57,10 +69,10 @@ const[error, setError]=useState('')
     }
 
     return (
-        <div className=' mx-auto'>
-           <h1 className='text-2xl my-8 text-center '> Registration Page</h1>
+        <div className='py-6 mx-auto bg-base-200'>
+           <h1 className='text-2xl text-center '> Registration Page</h1>
 
-            <form onSubmit={handleSubmit} className='bg-base-200 flex flex-col py-5 items-center '>
+            <form onSubmit={handleSubmit} className=' flex flex-col py-5 items-center '>
                 <div>
                     <h1>Name</h1>
                 <input name='name' type="text" placeholder="Name" className="input my-2 w-[300px]" />
@@ -83,7 +95,7 @@ const[error, setError]=useState('')
                 </div>
                 <div className=''>
                 {
-                    error? <div className='text-red-500 my-6 px-10'>{error}</div> : ''
+                    error? <div className='text-red-500 my-6 px-4 md:w-md'>{error}</div> : ''
                 }
                 </div>
 
@@ -94,6 +106,9 @@ const[error, setError]=useState('')
                 <button className='btn btn-wide text-white my-4 btn-info'> Register</button>
 
             </form>
+           
+            <button onClick={handleGoogleLogin} className='btn  mx-auto flex justify-center text-white bg-green-500 '>Log In With Google</button>
+            
         </div>
     );
 };

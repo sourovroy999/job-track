@@ -1,11 +1,18 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router';
 import toast, { Toaster } from 'react-hot-toast';
+import PasswordReset from './PasswordReset';
 
 const Login = () => {
 
+    const emailRef=useRef()
+    
+
+    
+
     const {signInUser, setUser, googleSignIn}= useContext(AuthContext)
+
 
     const [error, setError]=useState('')
 
@@ -16,10 +23,20 @@ const Login = () => {
         toast.success('log in successfully')
     }
 
+    const handleForgetPassword=()=>{
+        const emailGet=emailRef.current.value;
+        console.log(emailGet);
+        
+    }
+
     const handleSignIn=(e)=>{
         e.preventDefault()
         const email= e.target.email.value;
         const password=e.target.password.value;
+        
+
+        
+        
         
 
         signInUser(email, password)
@@ -39,6 +56,7 @@ const Login = () => {
     const handleGoogleLogin=()=>{
         googleSignIn()
         .then(()=>{
+        
             naviGate(location?.state ? location.state: '/')
             logInToast()
 
@@ -57,11 +75,11 @@ const Login = () => {
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <form onSubmit={handleSignIn} className="card-body">
               <fieldset className="fieldset">
-                <label className="label">Email</label>
-                <input name='email' type="email" className="input" placeholder="Email" />
+                <label  className="label">Email</label>
+                <input ref={emailRef} name='email' type="email" className="input" placeholder="Email" />
                 <label className="label">Password</label>
                 <input name='password' type="password" className="input" placeholder="Password" />
-                <div><a className="link link-hover">Forgot password?</a></div>
+                <Link onClick={()=>handleForgetPassword()} className="link link-hover"> Forgot password? </Link>
                 {
                     error? <div className='text-red-400'>{error}</div>  : ''
                 }
