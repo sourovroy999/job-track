@@ -40,7 +40,7 @@ const Login = () => {
         const email= e.target.email.value;
         const password=e.target.password.value;
         
-
+      setError('')
         
         
         
@@ -52,9 +52,12 @@ const Login = () => {
             
             const destination = location.state?.from?.pathname || '/';
                 console.log("Redirecting to:", destination);
-                naviGate(destination);
+                
                 logInToast();
-            
+
+                setTimeout(() => {
+                    naviGate(destination,{replace : true});
+                }, 100);
 
        }
        
@@ -65,14 +68,19 @@ const Login = () => {
 
     const handleGoogleLogin=()=>{
         googleSignIn()
-        .then(()=>{
+        .then((result)=>{
+
+            setUser(result.user)
         
-            naviGate(location?.state ? location.state: '/')
+           const destination = location?.state?.from?.pathname || '/';
             logInToast()
+            setTimeout(() => {
+                naviGate(destination,{replace : true});
+            }, 100);
 
         })
         .catch((err)=>{
-            setError(err)
+            setError(err.message)
         })
 
     }
