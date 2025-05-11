@@ -1,13 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router';
+
     
 
 const CompanySingle = ({insideCompany}) => {
     const {id,logo}=insideCompany
+    
 
    
     return (
-        <div>
+        <motion.div  whileHover={{scale:1.1}} 
+        initial={{scale:0}} animate={{ scale: 1,
+        transition:{duration:0.5}
+         }} 
+        >
 
 
 <Link to={`/company/${id}`}>
@@ -16,7 +22,7 @@ const CompanySingle = ({insideCompany}) => {
 
            
               
-        </div>
+        </motion.div>
     );
 };
 

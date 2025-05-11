@@ -3,6 +3,7 @@ import Header from '../Header/Header';
 import Company from '../Company/Company';
 import NewsletterSignup from '../NewsLetter/NewsletterSignup';
 import CallToActionBanner from '../NewsLetter/CallToActionBanner';
+import Motion from './Motion';
 // import { useLoaderData } from 'react-router';
 
 
@@ -17,7 +18,7 @@ const Home = () => {
     return (
        <>
        <Header/>
-       
+       <Motion/>
        
        <Company/>
        <CallToActionBanner/>
